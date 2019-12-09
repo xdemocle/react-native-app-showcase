@@ -1,19 +1,36 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import WelcomeScreen from './views/welcome-screen'
+import HomeScreen from './views/home-screen'
+import SignupScreen from './views/signup-screen'
+import LoginScreen from './views/login-screen'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootStack = createStackNavigator({
+  Welcome: {
+    screen: WelcomeScreen
   },
-});
+  Home: {
+    screen: HomeScreen
+  },
+  Signup: {
+    screen: SignupScreen
+  },
+  Login: {
+    screen: LoginScreen
+  }
+},
+{
+  initialRouteName: 'Welcome',
+  /* The header config from HomeScreen is now here */
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  },
+})
+
+export default createAppContainer(RootStack)
