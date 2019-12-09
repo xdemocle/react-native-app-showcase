@@ -1,9 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
 export default class Screen extends React.Component {
   static navigationOptions = {
-    title: 'Knock'
+    title: 'Knock',
+    headerStyle: {
+      display: 'none'
+    },
   }
 
   render() {
@@ -12,20 +15,21 @@ export default class Screen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.jumbotron}>
-          <Text style={styles.jumbotron.first}>knock</Text>
-          <Text style={styles.jumbotron.second}>your virtual doorbell</Text>
+          <Image style={styles.jumbotronImage} source={require('../assets/icon.png')} />
+          <Text style={styles.jumbotronFirst}>knock</Text>
+          <Text style={styles.jumbotronSecond}>your virtual doorbell</Text>
         </View>
         <View style={styles.actions}>
-          <Button
-            title="Log In"
-            onPress={() => navigate('Login')}
-            style={[styles.buttons, styles.buttonLeft]}
-          />
-          <Button
-            title="Sign Up"
-            onPress={() => navigate('Signup')}
-            style={[styles.buttons, styles.buttonRight]}
-          />
+          <View style={[styles.viewButton, styles.viewRight]}>
+            <TouchableOpacity style={[styles.button, styles.buttonRight]} onPress={() => navigate('Signup')} >
+              <Text style={styles.buttonText}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={[styles.viewButton, styles.viewLeft]}>
+            <TouchableOpacity style={[styles.button, styles.buttonLeft]} onPress={() => navigate('Login')}>
+              <Text style={styles.buttonText}>Log In</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     )
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#64D2FF',
+    backgroundColor: '#28CDFB',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column'
@@ -44,26 +48,58 @@ const styles = StyleSheet.create({
   jumbotron: {
     flex: 4,
     width: '100%',
-    first: {
-      fontSize: 30
-    },
-    second: {
-      fontSize: 16
-    }
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  jumbotronImage: {
+    width: 192,
+    height: 192
+  },
+  jumbotronFirst: {
+    fontSize: 60,
+    fontWeight: '900',
+    textAlign: 'center',
+    lineHeight: 60
+  },
+  jumbotronSecond: {
+    fontSize: 30,
+    fontWeight: '600',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    lineHeight: 30
   },
   actions: {
     flex: 2,
-    width: '100%'
+    width: '100%',
+    flexDirection: 'column'
   },
-  buttons: {
-    width: '30%'
+  viewButton: {
+    width: '42%'
+  },
+  viewLeft: {
+    alignSelf: 'flex-start',
+    marginTop: 20
+  },
+  viewRight: {
+    alignSelf: 'flex-end',
+    marginTop: 60
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 13,
+    borderRadius: 20
+  },
+  buttonText: {
+    fontSize: 25,
+    fontWeight: '300'
   },
   buttonLeft: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#fff',
-    color: '#000'
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0
   },
   buttonRight: {
-    alignSelf: 'flex-end'
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0
   }
 })
