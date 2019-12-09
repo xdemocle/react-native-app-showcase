@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 export default class Screen extends React.Component {
   static navigationOptions = {
@@ -12,10 +12,6 @@ export default class Screen extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Login Screen</Text>
-        <Button
-          title="Go to Jane's profile"
-          onPress={() => navigate('Profile')}
-        />
       </View>
     )
   }
