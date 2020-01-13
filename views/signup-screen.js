@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 export default class Screen extends React.Component {
-  static navigationOptions = {
-    title: 'Signup'
-  }
+  // static navigationOptions = {
+  //   title: 'Signup'
+  // }
 
   render() {
     return (

@@ -4237,6 +4237,11 @@ react-native-gesture-handler@~1.3.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-page-swiper@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-page-swiper/-/react-native-page-swiper-0.4.0.tgz#58f1383c6acc1c3d6d26148490a0421267930f55"
+  integrity sha512-DbSGYR4rNcDiSkoOjYw/Cv0oizF7m/lbwh+xy3XC5d5xfxYe8dEyFon2YdGDYmWgBWdKA6pdFTYIMFuoimLELg==
+
 react-native-reanimated@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.2.0.tgz#9219227a52a5dfa4d34c324596d6726ccd874293"

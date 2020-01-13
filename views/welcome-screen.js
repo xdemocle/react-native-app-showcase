@@ -2,15 +2,16 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
 export default class Screen extends React.Component {
-  static navigationOptions = {
-    title: 'Knock',
-    headerStyle: {
-      display: 'none'
-    },
-  }
+  // static navigationOptions = {
+  //   title: 'Knock',
+  //   headerStyle: {
+  //     display: 'none'
+  //   },
+  // }
 
   render() {
-    const { navigate } = this.props.navigation
+    // const { navigate } = this.props.navigation
+    const { slideTo } = this.props
 
     return (
       <View style={styles.container}>
@@ -21,12 +22,12 @@ export default class Screen extends React.Component {
         </View>
         <View style={styles.actions}>
           <View style={[styles.viewButton, styles.viewRight]}>
-            <TouchableOpacity style={[styles.button, styles.buttonRight]} onPress={() => navigate('Signup')} >
+            <TouchableOpacity style={[styles.button, styles.buttonRight]} onPress={() => slideTo(2)} >
               <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
           <View style={[styles.viewButton, styles.viewLeft]}>
-            <TouchableOpacity style={[styles.button, styles.buttonLeft]} onPress={() => navigate('Login')}>
+            <TouchableOpacity style={[styles.button, styles.buttonLeft]} onPress={() => slideTo(0)}>
               <Text style={styles.buttonText}>Log In</Text>
             </TouchableOpacity>
           </View>
