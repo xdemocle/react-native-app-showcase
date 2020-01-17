@@ -6,15 +6,15 @@ import SignupScreen from './signup-screen'
 import LoginScreen from './login-screen'
 
 export default class Screen extends React.Component {
-  state={
+  state = {
     swipeIndex: 1
   }
 
-  slideTo = (newIndex) => {
+  slideTo = newIndex => {
     this.setState({ swipeIndex: newIndex })
   }
 
-  onPageChange = (currentIndex) => {
+  onPageChange = currentIndex => {
     if (currentIndex === 1) {
       this.slideTo(1)
     }
@@ -24,7 +24,12 @@ export default class Screen extends React.Component {
     const { swipeIndex } = this.state
 
     return (
-      <Swiper style={styles.wrapper} onPageChange={this.onPageChange} index={swipeIndex} activeDotColor="white">
+      <Swiper
+        style={styles.wrapper}
+        onPageChange={this.onPageChange}
+        index={swipeIndex}
+        activeDotColor="white"
+      >
         <View style={styles.container}>
           <LoginScreen slideTo={this.slideTo} />
         </View>
@@ -42,8 +47,7 @@ export default class Screen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-  },
+  wrapper: {},
 
   container: {
     flex: 1,

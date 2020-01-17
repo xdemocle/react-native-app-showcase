@@ -1,5 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native'
 
 export default class Screen extends React.Component {
   // static navigationOptions = {
@@ -34,7 +40,7 @@ export default class Screen extends React.Component {
               // onChangeText={(text) => this.setState({text})}
               // value={this.state.text}
             />
-            <TouchableOpacity style={styles.button} onPress={() => slideTo(2)} >
+            <TouchableOpacity style={styles.button} onPress={() => slideTo(2)}>
               <Text style={styles.buttonText}>Log In</Text>
             </TouchableOpacity>
           </View>
