@@ -41,7 +41,6 @@ class Screen extends React.Component {
         <View style={styles.formWrapper}>
           <View style={styles.form}>
             <TextInput
-              autoFocus
               placeholder="Email"
               autoCapitalize="none"
               autoCompleteType="email"
