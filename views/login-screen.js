@@ -1,18 +1,20 @@
 import React from 'react'
+import { withNavigation } from 'react-navigation'
+
 import {
+  Platform,
   StyleSheet,
   Text,
   TextInput,
+  TouchableNativeFeedback,
   TouchableOpacity,
   View
 } from 'react-native'
 
-export default class Screen extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Login'
-  // }
-
+class Screen extends React.Component {
   render() {
+    const { navigate } = this.props.navigation
+
     return (
       <View style={styles.container}>
         <View style={styles.jumbotron}>
@@ -40,9 +42,23 @@ export default class Screen extends React.Component {
               // onChangeText={(text) => this.setState({text})}
               // value={this.state.text}
             />
-            <TouchableOpacity style={styles.button} onPress={() => slideTo(2)}>
-              <Text style={styles.buttonText}>Log In</Text>
-            </TouchableOpacity>
+            {Platform.OS === 'android' ? (
+              <TouchableNativeFeedback
+                onPress={() => navigate('List')}
+                background={TouchableNativeFeedback.SelectableBackground()}
+              >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Log In</Text>
+                </View>
+              </TouchableNativeFeedback>
+            ) : (
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigate('List')}
+              >
+                <Text>Log In</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>
@@ -117,3 +133,5 @@ const styles = StyleSheet.create({
     fontWeight: '700'
   }
 })
+
+export default withNavigation(Screen)

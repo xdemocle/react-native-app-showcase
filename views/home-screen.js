@@ -29,6 +29,7 @@ export default class Screen extends React.Component {
         onPageChange={this.onPageChange}
         index={swipeIndex}
         activeDotColor="white"
+        threshold={500}
       >
         <View style={styles.container}>
           <LoginScreen slideTo={this.slideTo} />

@@ -1,5 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Platform,
+  TouchableNativeFeedback,
+  TouchableOpacity
+} from 'react-native'
 
 export default class Screen extends React.Component {
   // static navigationOptions = {
@@ -10,26 +18,56 @@ export default class Screen extends React.Component {
   // }
 
   render() {
-    // const { navigate } = this.props.navigation
     const { slideTo } = this.props
 
     return (
       <View style={styles.container}>
         <View style={styles.jumbotron}>
-          <Image style={styles.jumbotronImage} source={require('../assets/icon.png')} />
+          <Image
+            style={styles.jumbotronImage}
+            source={require('../assets/icon.png')}
+          />
           <Text style={styles.jumbotronFirst}>knock</Text>
           <Text style={styles.jumbotronSecond}>your virtual doorbell</Text>
         </View>
         <View style={styles.actions}>
           <View style={[styles.viewButton, styles.viewRight]}>
-            <TouchableOpacity style={[styles.button, styles.buttonRight]} onPress={() => slideTo(2)} >
-              <Text style={styles.buttonText}>Sign Up</Text>
-            </TouchableOpacity>
+            {Platform.OS === 'android' ? (
+              <TouchableNativeFeedback
+                onPress={() => slideTo(2)}
+                background={TouchableNativeFeedback.SelectableBackground()}
+              >
+                <View style={[styles.button, styles.buttonRight]}>
+                  <Text style={styles.buttonText}>Sign Up</Text>
+                </View>
+              </TouchableNativeFeedback>
+            ) : (
+              <TouchableOpacity
+                style={[styles.button, styles.buttonRight]}
+                onPress={() => slideTo(2)}
+              >
+                <Text style={styles.buttonText}>Sign Up</Text>
+              </TouchableOpacity>
+            )}
           </View>
           <View style={[styles.viewButton, styles.viewLeft]}>
-            <TouchableOpacity style={[styles.button, styles.buttonLeft]} onPress={() => slideTo(0)}>
-              <Text style={styles.buttonText}>Log In</Text>
-            </TouchableOpacity>
+            {Platform.OS === 'android' ? (
+              <TouchableNativeFeedback
+                onPress={() => slideTo(0)}
+                background={TouchableNativeFeedback.SelectableBackground()}
+              >
+                <View style={[styles.button, styles.buttonLeft]}>
+                  <Text style={styles.buttonText}>Log In</Text>
+                </View>
+              </TouchableNativeFeedback>
+            ) : (
+              <TouchableOpacity
+                style={[styles.button, styles.buttonLeft]}
+                onPress={() => slideTo(0)}
+              >
+                <Text style={styles.buttonText}>Log In</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>
