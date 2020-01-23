@@ -1,19 +1,36 @@
 import React from 'react'
 import { withNavigation } from 'react-navigation'
-
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  View
-} from 'react-native'
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button } from 'react-native-elements'
+import * as Font from 'expo-font'
 
 class Screen extends React.Component {
+  state = {
+    fontLoaded: false
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      // 'Montserrat-Black': require('../assets/fonts/Montserrat-Black.ttf'),
+      'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+      // 'Montserrat-ExtraBold': require('../assets/fonts/Montserrat-ExtraBold.ttf'),
+      // 'Montserrat-ExtraLight': require('../assets/fonts/Montserrat-ExtraLight.ttf'),
+      // 'Montserrat-Italic': require('../assets/fonts/Montserrat-Italic.ttf'),
+      // 'Montserrat-Light': require('../assets/fonts/Montserrat-Light.ttf'),
+      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf')
+      // 'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
+    })
+
+    this.setState({ fontLoaded: true })
+  }
+
   render() {
     const { navigate } = this.props.navigation
+    const { fontLoaded } = this.state
+
+    if (!fontLoaded) {
+      return <View style={styles.container}></View>
+    }
 
     return (
       <View style={styles.container}>
@@ -24,6 +41,7 @@ class Screen extends React.Component {
         <View style={styles.formWrapper}>
           <View style={styles.form}>
             <TextInput
+              autoFocus
               placeholder="Email"
               autoCapitalize="none"
               autoCompleteType="email"
@@ -32,6 +50,7 @@ class Screen extends React.Component {
               // onChangeText={(text) => this.setState({text})}
               // value={this.state.text}
             />
+
             <TextInput
               placeholder="Password"
               autoCapitalize="none"
@@ -42,23 +61,13 @@ class Screen extends React.Component {
               // onChangeText={(text) => this.setState({text})}
               // value={this.state.text}
             />
-            {Platform.OS === 'android' ? (
-              <TouchableNativeFeedback
-                onPress={() => navigate('List')}
-                background={TouchableNativeFeedback.SelectableBackground()}
-              >
-                <View style={styles.button}>
-                  <Text style={styles.buttonText}>Log In</Text>
-                </View>
-              </TouchableNativeFeedback>
-            ) : (
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigate('List')}
-              >
-                <Text>Log In</Text>
-              </TouchableOpacity>
-            )}
+
+            <Button
+              title="Log In"
+              onPress={() => navigate('List')}
+              titleStyle={styles.buttonText}
+              buttonStyle={styles.button}
+            />
           </View>
         </View>
       </View>
@@ -85,14 +94,15 @@ const styles = StyleSheet.create({
   },
   jumbotronFirst: {
     width: '100%',
-    fontSize: 45,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 37,
     textAlign: 'left',
     lineHeight: 60
   },
   jumbotronSecond: {
     width: '100%',
-    fontSize: 30,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 25,
     fontWeight: '600',
     fontStyle: 'normal',
     textAlign: 'left',
@@ -126,11 +136,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     padding: 18,
+    paddingTop: 15,
+    paddingBottom: 15,
     borderRadius: 20
   },
   buttonText: {
-    fontSize: 22,
-    fontWeight: '700'
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 21,
+    color: '#111'
   }
 })
 

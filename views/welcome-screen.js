@@ -1,24 +1,36 @@
 import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity
-} from 'react-native'
+import { Image, Platform, StyleSheet, Text, View } from 'react-native'
+import { Button } from 'react-native-elements'
+import * as Font from 'expo-font'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class Screen extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Knock',
-  //   headerStyle: {
-  //     display: 'none'
-  //   },
-  // }
+  state = {
+    fontLoaded: false
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      // 'Montserrat-Black': require('../assets/fonts/Montserrat-Black.ttf'),
+      'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+      // 'Montserrat-ExtraBold': require('../assets/fonts/Montserrat-ExtraBold.ttf'),
+      // 'Montserrat-ExtraLight': require('../assets/fonts/Montserrat-ExtraLight.ttf'),
+      // 'Montserrat-Italic': require('../assets/fonts/Montserrat-Italic.ttf'),
+      // 'Montserrat-Light': require('../assets/fonts/Montserrat-Light.ttf'),
+      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf')
+      // 'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
+    })
+
+    this.setState({ fontLoaded: true })
+  }
 
   render() {
     const { slideTo } = this.props
+    const { fontLoaded } = this.state
+
+    if (!fontLoaded) {
+      return <View style={styles.container}></View>
+    }
 
     return (
       <View style={styles.container}>
@@ -31,44 +43,23 @@ export default class Screen extends React.Component {
           <Text style={styles.jumbotronSecond}>your virtual doorbell</Text>
         </View>
         <View style={styles.actions}>
-          <View style={[styles.viewButton, styles.viewRight]}>
-            {Platform.OS === 'android' ? (
-              <TouchableNativeFeedback
-                onPress={() => slideTo(2)}
-                background={TouchableNativeFeedback.SelectableBackground()}
-              >
-                <View style={[styles.button, styles.buttonRight]}>
-                  <Text style={styles.buttonText}>Sign Up</Text>
-                </View>
-              </TouchableNativeFeedback>
-            ) : (
-              <TouchableOpacity
-                style={[styles.button, styles.buttonRight]}
-                onPress={() => slideTo(2)}
-              >
-                <Text style={styles.buttonText}>Sign Up</Text>
-              </TouchableOpacity>
-            )}
-          </View>
-          <View style={[styles.viewButton, styles.viewLeft]}>
-            {Platform.OS === 'android' ? (
-              <TouchableNativeFeedback
-                onPress={() => slideTo(0)}
-                background={TouchableNativeFeedback.SelectableBackground()}
-              >
-                <View style={[styles.button, styles.buttonLeft]}>
-                  <Text style={styles.buttonText}>Log In</Text>
-                </View>
-              </TouchableNativeFeedback>
-            ) : (
-              <TouchableOpacity
-                style={[styles.button, styles.buttonLeft]}
-                onPress={() => slideTo(0)}
-              >
-                <Text style={styles.buttonText}>Log In</Text>
-              </TouchableOpacity>
-            )}
-          </View>
+          <Button
+            title="Sign Up"
+            onPress={() => slideTo(2)}
+            titleStyle={styles.buttonText}
+            buttonStyle={[styles.button, styles.buttonRight]}
+            containerStyle={[styles.viewButton, styles.viewRight]}
+            iconRight
+            icon={<Icon name="arrow-right" size={23} color="#28CDFB" raised />}
+          />
+          <Button
+            title="Log In"
+            onPress={() => slideTo(0)}
+            titleStyle={styles.buttonText}
+            buttonStyle={[styles.button, styles.buttonLeft]}
+            containerStyle={[styles.viewButton, styles.viewLeft]}
+            icon={<Icon name="arrow-left" size={23} color="#28CDFB" raised />}
+          />
         </View>
       </View>
     )
@@ -85,7 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   jumbotron: {
-    flex: 4,
+    flex: 3,
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center'
@@ -95,13 +86,15 @@ const styles = StyleSheet.create({
     height: 192
   },
   jumbotronFirst: {
-    fontSize: 60,
-    fontWeight: '900',
+    marginTop: -30,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 50,
     textAlign: 'center',
     lineHeight: 60
   },
   jumbotronSecond: {
-    fontSize: 30,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 25,
     fontWeight: '600',
     fontStyle: 'italic',
     textAlign: 'center',
@@ -110,35 +103,43 @@ const styles = StyleSheet.create({
   actions: {
     flex: 2,
     width: '100%',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    marginBottom: '13%'
   },
   viewButton: {
-    width: '42%'
+    width: '45%'
   },
   viewLeft: {
     alignSelf: 'flex-start',
-    marginTop: 20
+    marginTop: 10
   },
   viewRight: {
     alignSelf: 'flex-end',
-    marginTop: 60
+    marginTop: 40
   },
   button: {
+    width: '100%',
     alignItems: 'center',
     backgroundColor: '#fff',
     padding: 13,
     borderRadius: 20
   },
-  buttonText: {
-    fontSize: 25,
-    fontWeight: '300'
-  },
   buttonLeft: {
+    alignSelf: 'flex-start',
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0
   },
   buttonRight: {
+    alignSelf: 'flex-end',
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0
+  },
+  buttonText: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 25,
+    color: '#111',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 })
