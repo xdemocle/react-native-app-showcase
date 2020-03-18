@@ -1,70 +1,77 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { ThemeProvider } from 'react-native-elements'
 import Swiper from 'react-native-page-swiper'
 import * as Font from 'expo-font'
-import WelcomeScreen from './welcome-screen'
-import SignupScreen from './signup-screen'
-import LoginScreen from './login-screen'
+import theme from '../constants/theme'
+import WelcomeScreen from './home-screen--welcome'
+import SignupScreen from './home-screen--signup'
+import LoginScreen from './home-screen--login'
 
-export default class Screen extends React.Component {
-  state = {
-    fontLoaded: false,
-    swipeIndex: 1
+function Screen({ navigation }) {
+  const [fontLoaded, setFontLoaded] = useState(false)
+  const [swipeIndex, setSwipeIndex] = useState(1)
+
+  useEffect(() => {
+    ;(async function() {
+      await Font.loadAsync({
+        'Montserrat-Black': require('../assets/fonts/Montserrat-Black.ttf'),
+        'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+        'Montserrat-ExtraBold': require('../assets/fonts/Montserrat-ExtraBold.ttf'),
+        'Montserrat-ExtraLight': require('../assets/fonts/Montserrat-ExtraLight.ttf'),
+        'Montserrat-Italic': require('../assets/fonts/Montserrat-Italic.ttf'),
+        'Montserrat-Light': require('../assets/fonts/Montserrat-Light.ttf'),
+        'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+        'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
+      })
+
+      setFontLoaded(true)
+    })()
+  })
+
+  const slideTo = newIndex => {
+    setSwipeIndex(newIndex)
   }
 
-  async componentDidMount() {
-    await Font.loadAsync({
-      'Montserrat-ExtraLight': require('../assets/fonts/Montserrat-ExtraLight.ttf'),
-      'Montserrat-Italic': require('../assets/fonts/Montserrat-Italic.ttf'),
-      'Montserrat-Light': require('../assets/fonts/Montserrat-Light.ttf'),
-      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
-      'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
-    })
-
-    this.setState({ fontLoaded: true })
-  }
-
-  slideTo = newIndex => {
-    this.setState({ swipeIndex: newIndex })
-  }
-
-  onPageChange = currentIndex => {
+  const onPageChange = currentIndex => {
     if (currentIndex === 1) {
-      this.slideTo(1)
+      slideTo(1)
     }
   }
 
-  render() {
-    const { fontLoaded, swipeIndex } = this.state
+  if (!fontLoaded) {
+    return <View style={styles.slide}></View>
+  }
 
-    return (
+  return (
+    <ThemeProvider theme={theme}>
       <Swiper
         style={styles.wrapper}
-        onPageChange={this.onPageChange}
+        onPageChange={onPageChange}
         index={swipeIndex}
         activeDotColor="white"
         threshold={500}
       >
-        <View style={styles.container}>
-          <LoginScreen slideTo={this.slideTo} />
+        <View style={styles.slide}>
+          <LoginScreen slideTo={slideTo} />
         </View>
 
-        <View style={styles.container}>
-          <WelcomeScreen slideTo={this.slideTo} />
+        <View style={styles.slide}>
+          <WelcomeScreen slideTo={slideTo} />
         </View>
 
-        <View style={styles.container}>
-          <SignupScreen slideTo={this.slideTo} />
+        <View style={styles.slide}>
+          <SignupScreen slideTo={slideTo} />
         </View>
       </Swiper>
-    )
-  }
+    </ThemeProvider>
+  )
 }
 
 const styles = StyleSheet.create({
   wrapper: {},
 
-  container: {
+  slide: {
     flex: 1,
     width: '100%',
     backgroundColor: '#fff',
@@ -72,3 +79,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
+export default Screen
