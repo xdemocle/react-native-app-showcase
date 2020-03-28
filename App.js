@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import HomeScreen from './views/home-screen'
 import ListScreen from './views/list-screen'
+import FriendsScreen from './views/friends-screen'
 
 const screenOptions = {
   headerStyle: {
@@ -34,6 +35,11 @@ const RootStack = () => {
         <Stack.Screen
           name="List"
           component={ListScreen}
+          options={stackScreenOptions}
+        />
+        <Stack.Screen
+          name="Friends"
+          component={FriendsScreen}
           options={stackScreenOptions}
         />
       </Stack.Navigator>

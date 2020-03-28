@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
 import { ThemeProvider } from 'react-native-elements'
 import Swiper from 'react-native-page-swiper'
 import * as Font from 'expo-font'
-import theme from '../constants/theme'
+import theme from '../common/theme'
 import WelcomeScreen from './home-screen--welcome'
 import SignupScreen from './home-screen--signup'
 import LoginScreen from './home-screen--login'
@@ -52,17 +52,29 @@ function Screen({ navigation }) {
         activeDotColor="white"
         threshold={500}
       >
-        <View style={styles.slide}>
-          <LoginScreen slideTo={slideTo} />
-        </View>
+        <SafeAreaView style={styles.container}>
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.slide}>
+              <LoginScreen slideTo={slideTo} />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
 
-        <View style={styles.slide}>
-          <WelcomeScreen slideTo={slideTo} />
-        </View>
+        <SafeAreaView style={styles.container}>
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.slide}>
+              <WelcomeScreen slideTo={slideTo} />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
 
-        <View style={styles.slide}>
-          <SignupScreen slideTo={slideTo} />
-        </View>
+        <SafeAreaView style={styles.container}>
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.slide}>
+              <SignupScreen slideTo={slideTo} />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </Swiper>
     </ThemeProvider>
   )
@@ -71,12 +83,27 @@ function Screen({ navigation }) {
 const styles = StyleSheet.create({
   wrapper: {},
 
+  container: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    backgroundColor: '#28CDFB'
+  },
+
+  scrollView: {
+    flex: 1,
+    width: '100%'
+  },
+
   slide: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    minHeight: '100%'
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center'
   }
 })
 

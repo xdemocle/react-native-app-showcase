@@ -4,7 +4,8 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
-// import { components } from '../constants/theme'
+// import { components } from '../common/theme'
+import { resetLoggedNavigation } from '../common/utility'
 
 function Screen({ navigation }) {
   const [date, setDate] = useState(new Date(1598051730000))
@@ -13,6 +14,7 @@ function Screen({ navigation }) {
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' }
 
   const onChange = (event, selectedDate) => {
+    setShow(Platform.OS === 'ios')
     setDate(selectedDate || date)
   }
 
@@ -69,13 +71,11 @@ function Screen({ navigation }) {
               {show && (
                 <RNDateTimePicker
                   testID="dateTimePicker"
-                  // timeZoneOffsetInMinutes={0}
                   value={date}
                   mode="date"
                   is24Hour={true}
                   display="default"
                   onChange={onChange}
-                  // style={{ color: '#ffffff' }}
                 />
               )}
             </View>
@@ -149,7 +149,7 @@ function Screen({ navigation }) {
 
           <Button
             title="Create Account"
-            onPress={() => navigation.navigate('List')}
+            onPress={() => resetLoggedNavigation(navigation)}
           />
         </View>
       </View>
@@ -195,7 +195,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    paddingTop: 15,
+    paddingBottom: 80
   },
   form: {
     width: '100%',

@@ -2341,9 +2341,9 @@ expo-asset@~8.0.0:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
-expo-constants@~8.0.0:
+expo-@~8.0.0:
   version "8.0.0"
-  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-8.0.0.tgz#e2c5a072dacb4263ccfc57dcb4835ca791960d48"
+  resolved "https://registry.yarnpkg.com/expo-/-/expo--8.0.0.tgz#e2c5a072dacb4263ccfc57dcb4835ca791960d48"
   integrity sha512-NGRwSWfhwNFA9WVLXwqnSDPJJ4DdXTqEkl9Fr9PcyW5VCoFgz7uke256E1YZsYhOE0Ph365lu/5jjZs+MRmRog==
   dependencies:
     ua-parser-js "^0.7.19"
@@ -2421,7 +2421,7 @@ expo@^36.0.0:
     cross-spawn "^6.0.5"
     expo-app-loader-provider "~8.0.0"
     expo-asset "~8.0.0"
-    expo-constants "~8.0.0"
+    expo- "~8.0.0"
     expo-error-recovery "~1.0.0"
     expo-file-system "~8.0.0"
     expo-font "~8.0.0"
@@ -2443,7 +2443,7 @@ expo@^36.0.0:
     serialize-error "^2.1.0"
     unimodules-barcode-scanner-interface "~5.0.0"
     unimodules-camera-interface "~5.0.0"
-    unimodules-constants-interface "~5.0.0"
+    unimodules--interface "~5.0.0"
     unimodules-face-detector-interface "~5.0.0"
     unimodules-file-system-interface "~5.0.0"
     unimodules-font-interface "~5.0.0"
@@ -5307,9 +5307,9 @@ unimodules-camera-interface@~5.0.0:
   resolved "https://registry.yarnpkg.com/unimodules-camera-interface/-/unimodules-camera-interface-5.0.0.tgz#980b6ac221deea26badf92ee0baca91c546dc6b1"
   integrity sha512-fe1Q1RZ6daKLtT5M87HdznBAV9qEsuHdPZVUWsLfizCXrHwCcRWErwb4RZoJC20Y11sj+kkLlE4W5fBJDn6/WA==
 
-unimodules-constants-interface@~5.0.0:
+unimodules--interface@~5.0.0:
   version "5.0.0"
-  resolved "https://registry.yarnpkg.com/unimodules-constants-interface/-/unimodules-constants-interface-5.0.0.tgz#0e224fde9cf809ed7a026672180e3c96dc186f34"
+  resolved "https://registry.yarnpkg.com/unimodules--interface/-/unimodules--interface-5.0.0.tgz#0e224fde9cf809ed7a026672180e3c96dc186f34"
   integrity sha512-s7Fwe3MV6BCj+Sexwfrj9mLAzJlhMfOd/ZM9PNZG10nlTRw8uDxQq0VH1m8NuJqV1Ma2BUmQM7H3lBPe4EysYg==
 
 unimodules-face-detector-interface@~5.0.0:

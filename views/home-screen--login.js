@@ -2,7 +2,8 @@ import React from 'react'
 import { withNavigation } from '@react-navigation/compat'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
-// import { components } from '../constants/theme'
+// import { components } from '../common/theme'
+import { resetLoggedNavigation } from '../common/utility'
 
 function Screen({ navigation }) {
   return (
@@ -35,7 +36,10 @@ function Screen({ navigation }) {
 
           <Divider />
 
-          <Button title="Log In" onPress={() => navigation.navigate('List')} />
+          <Button
+            title="Log In"
+            onPress={() => resetLoggedNavigation(navigation)}
+          />
         </View>
       </View>
     </View>
@@ -56,7 +60,7 @@ const styles = StyleSheet.create({
   jumbotron: {
     flex: 1,
     width: '100%',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'center'
   },
   jumbotronFirst: {
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   formWrapper: {
-    flex: 4,
+    flex: 3,
     alignItems: 'center',
     width: '100%',
     flexDirection: 'column',

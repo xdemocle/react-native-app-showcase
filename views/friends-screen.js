@@ -41,8 +41,7 @@ function Screen({ navigation }) {
     <ThemeProvider theme={theme}>
       <View style={styles.container}>
         <View style={styles.jumbotron}>
-          <Text style={styles.jumbotronFirst}>List</Text>
-          <Text>List</Text>
+          <Text style={styles.jumbotronFirst}>Friends</Text>
         </View>
       </View>
     </ThemeProvider>
@@ -51,11 +50,15 @@ function Screen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    // width: '100%',
+    // backgroundColor: '#28CDFB',
     // flexDirection: 'column',
+    // paddingLeft: '5%',
+    // paddingRight: '5%'
+
+    flex: 1,
     width: '100%',
-    paddingLeft: '5%',
-    paddingRight: '5%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
   jumbotron: {
     flex: 1,
     width: '100%',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     alignItems: 'center'
   },
   jumbotronFirst: {
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 45,
     fontWeight: '700',
     textAlign: 'left',
-    lineHeight: 100
+    lineHeight: 60
   }
 })
 
