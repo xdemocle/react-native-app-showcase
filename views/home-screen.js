@@ -52,21 +52,13 @@ function Screen({ navigation }) {
         activeDotColor="white"
         threshold={500}
       >
-        <SafeAreaView style={styles.container}>
-          <ScrollView style={styles.scrollView}>
-            <View style={styles.slide}>
-              <LoginScreen slideTo={slideTo} />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
+        <View style={styles.slide}>
+          <LoginScreen slideTo={slideTo} />
+        </View>
 
-        <SafeAreaView style={styles.container}>
-          <ScrollView style={styles.scrollView}>
-            <View style={styles.slide}>
-              <WelcomeScreen slideTo={slideTo} />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
+        <View style={styles.slide}>
+          <WelcomeScreen slideTo={slideTo} />
+        </View>
 
         <SafeAreaView style={styles.container}>
           <ScrollView style={styles.scrollView}>
@@ -94,7 +86,9 @@ const styles = StyleSheet.create({
 
   scrollView: {
     flex: 1,
-    width: '100%'
+    width: '100%',
+    minHeight: '100%',
+    height: '100%'
   },
 
   slide: {

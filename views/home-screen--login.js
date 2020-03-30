@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   jumbotron: {
     flex: 1,
     width: '100%',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center'
   },
   jumbotronFirst: {
