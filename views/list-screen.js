@@ -9,12 +9,22 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Icon } from 'react-native-elements'
 import * as Font from 'expo-font'
 import { ThemeProvider } from 'react-native-elements'
 import theme from '../common/theme'
 
-function Screen({ navigation }) {
+import HomeListScreen from './list-screen--home'
+import ProfileScreen from './list-screen--profile'
+import FriendsScreen from './list-screen--friends'
+
+export default function Screen({ navigation }) {
+  const buttons = ['Profile', 'Friends']
+  const [selectedIndex, setSelectedIndex] = useState(-1)
   const [fontLoaded, setFontLoaded] = useState(false)
+
+  const Tab = createBottomTabNavigator()
 
   useEffect(() => {
     ;(async function() {
@@ -39,12 +49,39 @@ function Screen({ navigation }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <View style={styles.jumbotron}>
-          <Text style={styles.jumbotronFirst}>List</Text>
-          <Text>List</Text>
-        </View>
-      </View>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'home' : 'home'
+            } else if (route.name === 'Profile') {
+              iconName = focused ? 'user' : 'user'
+            } else if (route.name === 'Friends') {
+              iconName = focused ? 'users' : 'users'
+            }
+
+            // You can return any component that you like here!
+            return (
+              <Icon
+                type="font-awesome"
+                name={iconName}
+                size={size}
+                color={color}
+              />
+            )
+          }
+        })}
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray'
+        }}
+      >
+        <Tab.Screen name="Home" component={HomeListScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="Friends" component={FriendsScreen} />
+      </Tab.Navigator>
     </ThemeProvider>
   )
 }
@@ -52,27 +89,43 @@ function Screen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    width: '100%',
-    paddingLeft: '5%',
-    paddingRight: '5%',
     backgroundColor: '#fff',
+    // flexDirection: 'column',
+    // width: '100%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    margin: 0,
+    padding: 0
   },
-  jumbotron: {
-    flex: 1,
+  // topbar: {
+  //   flex: 1,
+  //   backgroundColor: '#aaa',
+  //   justifyContent: 'flex-start',
+  //   alignItems: 'flex-start',
+  //   width: '100%',
+  //   margin: 0,
+  //   padding: 0
+  // },
+  // topbarContainerButtons: {
+  //   flex: 1,
+  //   borderWidth: 0,
+  //   margin: 0,
+  //   padding: 0
+  // },
+  // topbarButtons: {
+  //   margin: 0,
+  //   padding: 0
+  // },
+  body: {
+    // paddingLeft: '5%',
+    // paddingRight: '5%',
+    backgroundColor: '#ddd',
+    flex: 9,
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
-  jumbotronFirst: {
-    width: '100%',
-    fontSize: 45,
-    fontWeight: '700',
-    textAlign: 'left',
-    lineHeight: 100
+  searchBar: {
+    width: '100%'
   }
 })
-
-export default Screen
