@@ -2,7 +2,7 @@ import React from 'react'
 import { withNavigation } from '@react-navigation/compat'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
-// import { components } from '../common/theme'
+import { colors } from '../common/theme'
 import { resetLoggedNavigation } from '../common/utility'
 
 function Screen({ navigation }) {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#28CDFB',
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',

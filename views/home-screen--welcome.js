@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Platform, StyleSheet, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { colors } from '../common/theme'
 
 const Screen = ({ slideTo }) => {
   return (
@@ -21,14 +22,18 @@ const Screen = ({ slideTo }) => {
           containerStyle={styles.viewButtonRight}
           buttonStyle={styles.buttonRight}
           iconRight
-          icon={<Icon name="arrow-right" size={23} color="#28CDFB" raised />}
+          icon={
+            <Icon name="arrow-right" size={23} color={colors.primary} raised />
+          }
         />
         <Button
           title="Log In"
           onPress={() => slideTo(0)}
           containerStyle={styles.viewButtonLeft}
           buttonStyle={styles.buttonLeft}
-          icon={<Icon name="arrow-left" size={23} color="#28CDFB" raised />}
+          icon={
+            <Icon name="arrow-left" size={23} color={colors.primary} raised />
+          }
         />
       </View>
     </View>
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#28CDFB',
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column'

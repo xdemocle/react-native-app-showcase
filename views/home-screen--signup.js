@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
-// import { components } from '../common/theme'
+import { colors } from '../common/theme'
 import { resetLoggedNavigation } from '../common/utility'
 
 function Screen({ navigation }) {
@@ -58,7 +58,7 @@ function Screen({ navigation }) {
                   <Icon
                     name="calendar"
                     size={24}
-                    color="#28CDFB"
+                    color={colors.primary}
                     onPress={() => setShow(!show)}
                   />
                 }
@@ -121,7 +121,9 @@ function Screen({ navigation }) {
                 autoCompleteType="password"
                 textContentType="password"
                 secureTextEntry
-                rightIcon={<Icon name="lock" size={24} color="#28CDFB" />}
+                rightIcon={
+                  <Icon name="lock" size={24} color={colors.primary} />
+                }
                 // onChangeText={(text) => this.setState({text})}
                 // value={this.state.text}
               />
@@ -138,7 +140,9 @@ function Screen({ navigation }) {
                 autoCompleteType="password"
                 textContentType="newPassword"
                 secureTextEntry
-                rightIcon={<Icon name="lock" size={24} color="#28CDFB" />}
+                rightIcon={
+                  <Icon name="lock" size={24} color={colors.primary} />
+                }
                 // onChangeText={(text) => this.setState({text})}
                 // value={this.state.text}
               />
@@ -161,7 +165,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#28CDFB',
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',

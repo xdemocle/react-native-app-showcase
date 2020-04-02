@@ -56,3 +56,7 @@ export default {
 }
 
 export const components = {}
+
+export const colors = {
+  primary: '#28CDFB'
+}
