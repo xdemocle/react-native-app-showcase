@@ -1,80 +1,69 @@
 import React, { useState, useEffect } from 'react'
 import {
-  // Alert,
-  // Platform,
+  Dimensions,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
-  // TextInput,
-  // TouchableNativeFeedback,
-  // TouchableOpacity,
   View
 } from 'react-native'
-import { SearchBar } from 'react-native-elements'
+import { Divider, ListItem, SearchBar, Text } from 'react-native-elements'
+import { contactsList, contactsFavouriteList } from '../common/mock'
+
+const deviceWidth = Dimensions.get('window').width
 
 export default function Screen({ navigation }) {
   const [searchText, setSearchText] = useState('')
 
   return (
     <View style={styles.container}>
-      <SearchBar
-        containerStyle={styles.searchBar}
-        placeholder="Search friends..."
-        onChangeText={setSearchText}
-        value={searchText}
-      />
-      <View style={styles.body}>
-        <SafeAreaView>
-          <ScrollView style={styles.scrollView}>
-            <Text h1>Heading 2</Text>
-
-            <Text>
-              Bacon ipsum dolor amet pastrami pork chop andouille, shankle chuck
-              jowl picanha landjaeger. Ground round meatball boudin jowl. Doner
-              prosciutto ham hock cupim ribeye kielbasa pig chislic biltong
-              fatback frankfurter shankle shoulder kevin chicken. Shoulder
-              shankle ham picanha flank tri-tip boudin jowl pig drumstick
-              fatback andouille buffalo kevin shank. Ball tip pastrami drumstick
-              ham shoulder spare ribs pork chop meatball pancetta swine alcatra
-              andouille ground round. Cow landjaeger rump pancetta shankle
-              flank, swine sirloin tongue prosciutto. Beef pig biltong pancetta,
-              cupim salami buffalo landjaeger picanha turducken spare ribs
-              meatball. Bacon ipsum dolor amet pastrami pork chop andouille,
-              shankle chuck jowl picanha landjaeger. Ground round meatball
-              boudin jowl. Doner prosciutto ham hock cupim ribeye kielbasa pig
-              chislic biltong fatback frankfurter shankle shoulder kevin
-              chicken. Shoulder shankle ham picanha flank tri-tip boudin jowl
-              pig drumstick fatback andouille buffalo kevin shank. Ball tip
-              pastrami drumstick ham shoulder spare ribs pork chop meatball
-              pancetta swine alcatra andouille ground round. Cow landjaeger rump
-              pancetta shankle flank, swine sirloin tongue prosciutto. Beef pig
-              biltong pancetta, cupim salami buffalo landjaeger picanha
-              turducken spare ribs meatball. Bacon ipsum dolor amet pastrami
-              pork chop andouille, shankle chuck jowl picanha landjaeger. Ground
-              round meatball boudin jowl. Doner prosciutto ham hock cupim ribeye
-              kielbasa pig chislic biltong fatback frankfurter shankle shoulder
-              kevin chicken. Shoulder shankle ham picanha flank tri-tip boudin
-              jowl pig drumstick fatback andouille buffalo kevin shank. Ball tip
-              pastrami drumstick ham shoulder spare ribs pork chop meatball
-              pancetta swine alcatra andouille ground round. Cow landjaeger rump
-              pancetta shankle flank, swine sirloin tongue prosciutto. Beef pig
-              biltong pancetta, cupim salami buffalo landjaeger picanha
-              turducken spare ribs meatball. Bacon ipsum dolor amet pastrami
-              pork chop andouille, shankle chuck jowl picanha landjaeger. Ground
-              round meatball boudin jowl. Doner prosciutto ham hock cupim ribeye
-              kielbasa pig chislic biltong fatback frankfurter shankle shoulder
-              kevin chicken. Shoulder shankle ham picanha flank tri-tip boudin
-              jowl pig drumstick fatback andouille buffalo kevin shank. Ball tip
-              pastrami drumstick ham shoulder spare ribs pork chop meatball
-              pancetta swine alcatra andouille ground round. Cow landjaeger rump
-              pancetta shankle flank, swine sirloin tongue prosciutto. Beef pig
-              biltong pancetta, cupim salami buffalo landjaeger picanha
-              turducken spare ribs meatball.
+      <SafeAreaView>
+        <SearchBar
+          containerStyle={styles.searchBar}
+          placeholder="Search friends..."
+          onChangeText={setSearchText}
+          value={searchText}
+        />
+        <ScrollView
+          style={styles.scrollView}
+          showsHorizontalScrollIndicator={false}
+          horizontal={false}
+          pagingEnabled={true}
+        >
+          <View>
+            <Text h3 style={{ fontFamily: 'Montserrat-Bold', marginTop: 3 }}>
+              Favorites
             </Text>
-          </ScrollView>
-        </SafeAreaView>
-      </View>
+
+            <Divider />
+
+            {contactsFavouriteList.map((l, i) => (
+              <ListItem
+                key={i}
+                leftAvatar={{ source: { uri: l.avatarUrl } }}
+                title={l.name}
+                rightIcon={{ name: 'star', color: '#FFAE30', size: 32 }}
+                bottomDivider
+              />
+            ))}
+
+            <Text h3 style={{ fontFamily: 'Montserrat-Bold', marginTop: 30 }}>
+              All Friends
+            </Text>
+
+            <Divider />
+
+            {contactsList.map((l, i) => (
+              <ListItem
+                key={i}
+                leftAvatar={{ source: { uri: l.avatarUrl } }}
+                title={l.name}
+                rightIcon={{ name: 'star', color: '#dddddd', size: 32 }}
+                bottomDivider
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   )
 }
@@ -84,22 +73,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     margin: 0,
     padding: 0
   },
-  body: {
-    flex: 9,
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
+  searchBar: {
+    flexDirection: 'column',
+    width: deviceWidth
   },
   scrollView: {
-    paddingLeft: '5%',
-    paddingRight: '5%',
-    flex: 1
-  },
-  searchBar: {
-    width: '100%'
+    width: deviceWidth,
+    paddingLeft: '2%',
+    paddingRight: '2%'
   }
 })

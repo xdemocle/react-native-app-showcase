@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import {
-  // Alert,
-  // Platform,
-  // StyleSheet,
-  Text,
-  // TextInput,
-  // TouchableNativeFeedback,
-  // TouchableOpacity,
-  View
-} from 'react-native'
-// import { NavigationContainer } from '@react-navigation/native'
-// import { ButtonGroup, SearchBar, ThemeProvider } from 'react-native-elements'
+import { Text, View } from 'react-native'
+import { Button } from 'react-native-elements'
+import { resetUnloggedNavigation } from '../common/utility'
 
 export default function Screen({ navigation }) {
   return (
     <View>
-      <Text>Settings</Text>
+      <Button
+        title="Log Out"
+        onPress={() => resetUnloggedNavigation(navigation)}
+      />
     </View>
   )
 }

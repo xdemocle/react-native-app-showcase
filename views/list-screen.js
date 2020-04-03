@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { cloneDeep } from 'lodash'
 import {
   Alert,
   Platform,
   StyleSheet,
-  Text,
   TextInput,
   TouchableNativeFeedback,
   TouchableOpacity,
@@ -23,6 +23,10 @@ export default function Screen({ navigation }) {
   const buttons = ['Profile', 'Friends']
   const [selectedIndex, setSelectedIndex] = useState(-1)
   const [fontLoaded, setFontLoaded] = useState(false)
+
+  const themeScreen = cloneDeep(theme)
+
+  themeScreen.Divider.backgroundColor = theme.colors.primary
 
   const Tab = createBottomTabNavigator()
 
@@ -69,7 +73,7 @@ export default function Screen({ navigation }) {
   })
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeScreen}>
       <Tab.Navigator
         screenOptions={tabBarIconFunc}
         tabBarOptions={{

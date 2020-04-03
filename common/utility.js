@@ -8,3 +8,12 @@ export const resetLoggedNavigation = navigation => {
     })
   )
 }
+
+export const resetUnloggedNavigation = navigation => {
+  navigation.dispatch(
+    CommonActions.reset({
+      index: 1,
+      routes: [{ name: 'Home' }]
+    })
+  )
+}

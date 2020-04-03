@@ -52,7 +52,7 @@ export default {
   },
 
   Divider: {
-    backgroundColor: 'white',
+    backgroundColor: '#ffffff',
     height: 2,
     marginTop: 10,
     marginBottom: 10
