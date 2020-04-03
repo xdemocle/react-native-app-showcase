@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
 import { ThemeProvider } from 'react-native-elements'
 import Swiper from 'react-native-page-swiper'
 import * as Font from 'expo-font'
-import theme, { colors } from '../common/theme'
+import theme from '../common/theme'
 import WelcomeScreen from './home-screen--welcome'
 import SignupScreen from './home-screen--signup'
 import LoginScreen from './home-screen--login'
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    backgroundColor: colors.primary
+    backgroundColor: theme.colors.primary
   },
 
   scrollView: {

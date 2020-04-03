@@ -27,6 +27,8 @@ export default function Screen({ navigation }) {
       <View style={styles.body}>
         <SafeAreaView>
           <ScrollView style={styles.scrollView}>
+            <Text h1>Heading 2</Text>
+
             <Text>
               Bacon ipsum dolor amet pastrami pork chop andouille, shankle chuck
               jowl picanha landjaeger. Ground round meatball boudin jowl. Doner
@@ -81,24 +83,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // flexDirection: 'column',
-    // width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 0,
     padding: 0
   },
-  // topbar: {
-  //   flex: 1,
-  //   backgroundColor: '#aaa',
-  //   justifyContent: 'flex-start',
-  //   alignItems: 'flex-start',
-  //   width: '100%',
-  //   margin: 0,
-  //   padding: 0
-  // },
   body: {
-    backgroundColor: '#ddd',
     flex: 9,
     width: '100%',
     justifyContent: 'flex-start',

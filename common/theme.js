@@ -1,4 +1,34 @@
 export default {
+  colors: {
+    primary: '#28CDFB',
+    // secondary: 'yellow'
+    // grey0
+    // grey1
+    // grey2
+    // grey3
+    // grey4
+    // grey5
+    // greyOutline
+    // searchBg
+    // success
+    // error
+    // warning
+    // divider
+    // platform: {
+    //   ios: {
+    //     primary
+    //     secondary
+    //     success
+    //     error
+    //     warning
+    //   }
+    //   android: {
+    //     // Same as ios
+    //   }
+    // }
+    accent: '#0dafdc'
+  },
+
   Button: {
     buttonStyle: {
       minWidth: '60%',
@@ -56,7 +86,3 @@ export default {
 }
 
 export const components = {}
-
-export const colors = {
-  primary: '#28CDFB'
-}

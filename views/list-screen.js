@@ -10,14 +10,14 @@ import {
   View
 } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Icon } from 'react-native-elements'
 import * as Font from 'expo-font'
-import { ThemeProvider } from 'react-native-elements'
+import { Icon, ThemeProvider } from 'react-native-elements'
 import theme from '../common/theme'
 
-import HomeListScreen from './list-screen--home'
+import ContactsListScreen from './list-screen--contacts'
 import ProfileScreen from './list-screen--profile'
 import FriendsScreen from './list-screen--friends'
+import SettingsScreen from './list-screen--settings'
 
 export default function Screen({ navigation }) {
   const buttons = ['Profile', 'Friends']
@@ -47,40 +47,40 @@ export default function Screen({ navigation }) {
     return <View style={styles.container}></View>
   }
 
+  const tabBarIconFunc = ({ route }) => ({
+    tabBarIcon: ({ focused, color, size }) => {
+      let iconName
+
+      if (route.name === 'Requests') {
+        iconName = focused ? 'results-demographics' : 'results-demographics'
+      } else if (route.name === 'Profile') {
+        iconName = focused ? 'torso' : 'torso'
+      } else if (route.name === 'Contacts') {
+        iconName = focused ? 'torsos-all' : 'torsos-all'
+      } else if (route.name === 'Settings') {
+        iconName = focused ? 'widget' : 'widget'
+      }
+
+      // You can return any component that you like here!
+      return (
+        <Icon type="foundation" name={iconName} size={size} color={color} />
+      )
+    }
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName
-
-            if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home'
-            } else if (route.name === 'Profile') {
-              iconName = focused ? 'user' : 'user'
-            } else if (route.name === 'Friends') {
-              iconName = focused ? 'users' : 'users'
-            }
-
-            // You can return any component that you like here!
-            return (
-              <Icon
-                type="font-awesome"
-                name={iconName}
-                size={size}
-                color={color}
-              />
-            )
-          }
-        })}
+        screenOptions={tabBarIconFunc}
         tabBarOptions={{
-          activeTintColor: 'tomato',
+          activeTintColor: theme.colors.accent,
           inactiveTintColor: 'gray'
         }}
       >
-        <Tab.Screen name="Home" component={HomeListScreen} />
+        <Tab.Screen name="Contacts" component={ContactsListScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Friends" component={FriendsScreen} />
+        <Tab.Screen name="Requests" component={FriendsScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </ThemeProvider>
   )
@@ -88,44 +88,13 @@ export default function Screen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    // flexDirection: 'column',
-    // width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 0,
-    padding: 0
-  },
-  // topbar: {
-  //   flex: 1,
-  //   backgroundColor: '#aaa',
-  //   justifyContent: 'flex-start',
-  //   alignItems: 'flex-start',
-  //   width: '100%',
-  //   margin: 0,
-  //   padding: 0
-  // },
-  // topbarContainerButtons: {
-  //   flex: 1,
-  //   borderWidth: 0,
-  //   margin: 0,
-  //   padding: 0
-  // },
-  // topbarButtons: {
-  //   margin: 0,
-  //   padding: 0
-  // },
-  body: {
-    // paddingLeft: '5%',
-    // paddingRight: '5%',
-    backgroundColor: '#ddd',
-    flex: 9,
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
-  },
-  searchBar: {
-    width: '100%'
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // // flexDirection: 'column',
+    // // width: '100%',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // margin: 0,
+    // padding: 0
   }
 })

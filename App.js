@@ -3,13 +3,13 @@ import * as React from 'react'
 import { StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { colors } from './common/theme'
+import theme from './common/theme'
 import HomeScreen from './views/home-screen'
 import ListScreen from './views/list-screen'
 
 const screenOptions = {
   headerStyle: {
-    backgroundColor: colors.primary
+    backgroundColor: theme.colors.primary
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
@@ -22,7 +22,10 @@ const Stack = createStackNavigator()
 const RootStack = () => {
   return (
     <NavigationContainer>
-      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={theme.colors.primary}
+      />
       <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
         <Stack.Screen
           name="Home"

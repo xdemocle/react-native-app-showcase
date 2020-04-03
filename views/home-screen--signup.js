@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
-import { colors } from '../common/theme'
+import theme from '../common/theme'
 import { resetLoggedNavigation } from '../common/utility'
 
 function Screen({ navigation }) {
@@ -58,7 +58,7 @@ function Screen({ navigation }) {
                   <Icon
                     name="calendar"
                     size={24}
-                    color={colors.primary}
+                    color={theme.colors.primary}
                     onPress={() => setShow(!show)}
                   />
                 }
@@ -122,7 +122,7 @@ function Screen({ navigation }) {
                 textContentType="password"
                 secureTextEntry
                 rightIcon={
-                  <Icon name="lock" size={24} color={colors.primary} />
+                  <Icon name="lock" size={24} color={theme.colors.primary} />
                 }
                 // onChangeText={(text) => this.setState({text})}
                 // value={this.state.text}
@@ -141,7 +141,7 @@ function Screen({ navigation }) {
                 textContentType="newPassword"
                 secureTextEntry
                 rightIcon={
-                  <Icon name="lock" size={24} color={colors.primary} />
+                  <Icon name="lock" size={24} color={theme.colors.primary} />
                 }
                 // onChangeText={(text) => this.setState({text})}
                 // value={this.state.text}
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: colors.primary,
+    backgroundColor: theme.colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
