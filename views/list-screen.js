@@ -16,7 +16,7 @@ import theme from '../common/theme'
 
 import ContactsListScreen from './list-screen--contacts'
 import ProfileScreen from './list-screen--profile'
-import FriendsScreen from './list-screen--friends'
+import RequestsScreen from './list-screen--requests'
 
 export default function Screen({ navigation }) {
   const buttons = ['Profile', 'Friends']
@@ -84,7 +84,7 @@ export default function Screen({ navigation }) {
         }}
       >
         <Tab.Screen name="Contacts" component={ContactsListScreen} />
-        <Tab.Screen name="Requests" component={FriendsScreen} />
+        <Tab.Screen name="Requests" component={RequestsScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </ThemeProvider>
