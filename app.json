@@ -2,7 +2,7 @@
   "expo": {
     "name": "KnockApp",
     "slug": "knock",
-    "description": "Updated: 3 April 2020",
+    "description": "Updated: 4 April 2020\n\nAdding user profile tab!",
     "githubUrl": "https://github.com/xdemocle/knock-app",
     "privacy": "public",
     "sdkVersion": "36.0.0",

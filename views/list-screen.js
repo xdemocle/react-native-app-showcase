@@ -17,7 +17,6 @@ import theme from '../common/theme'
 import ContactsListScreen from './list-screen--contacts'
 import ProfileScreen from './list-screen--profile'
 import FriendsScreen from './list-screen--friends'
-import SettingsScreen from './list-screen--settings'
 
 export default function Screen({ navigation }) {
   const buttons = ['Profile', 'Friends']
@@ -26,7 +25,10 @@ export default function Screen({ navigation }) {
 
   const themeScreen = cloneDeep(theme)
 
+  // Theming
   themeScreen.Divider.backgroundColor = theme.colors.primary
+  themeScreen.Button.buttonStyle.backgroundColor = theme.colors.accent
+  themeScreen.Button.titleStyle.color = theme.colors.white
 
   const Tab = createBottomTabNavigator()
 
@@ -82,9 +84,8 @@ export default function Screen({ navigation }) {
         }}
       >
         <Tab.Screen name="Contacts" component={ContactsListScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
         <Tab.Screen name="Requests" component={FriendsScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </ThemeProvider>
   )

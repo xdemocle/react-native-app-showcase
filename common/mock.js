@@ -69,3 +69,10 @@ export const contactsList = [
       'https://images.unsplash.com/photo-1548946526-f69e2424cf45?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=64&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
   }
 ]
+
+export const mainProfile = {
+  name: 'Heath Atwood',
+  nickname: 'blackphanter',
+  avatarUrl:
+    'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=128&fit=max&s=73a9df4b7bd1b330db1e903e08575ec1'
+}

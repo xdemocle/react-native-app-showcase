@@ -2,10 +2,11 @@ export default {
   colors: {
     primary: '#28CDFB',
     // secondary: 'yellow'
-    // grey0
+    // grey0: '#aaaaaa',
     // grey1
     // grey2
-    // grey3
+    // grey3: '#cccccc',
+    // grey4: '#c6c6c6',
     // grey4
     // grey5
     // greyOutline
@@ -26,7 +27,10 @@ export default {
     //     // Same as ios
     //   }
     // }
-    accent: '#0dafdc'
+    // EXTRA
+    white: '#ffffff',
+    accent: '#0dafdc',
+    containerBackgroundColor: '#ffffff'
   },
 
   Button: {
@@ -40,6 +44,7 @@ export default {
     },
     containerStyle: {
       width: '100%',
+      marginBottom: 10,
       marginTop: 10
     },
     titleStyle: {

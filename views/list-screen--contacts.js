@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import { Divider, ListItem, SearchBar, Text } from 'react-native-elements'
 import { contactsList, contactsFavouriteList } from '../common/mock'
+import theme from '../common/theme'
 
 const deviceWidth = Dimensions.get('window').width
 
@@ -71,7 +72,7 @@ export default function Screen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.containerBackgroundColor,
     alignItems: 'center',
     justifyContent: 'flex-start',
     margin: 0,
