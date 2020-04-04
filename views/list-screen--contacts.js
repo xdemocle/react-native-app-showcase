@@ -28,7 +28,7 @@ export default function Screen({ navigation }) {
           style={styles.scrollView}
           showsHorizontalScrollIndicator={false}
           horizontal={false}
-          pagingEnabled={true}
+          pagingEnabled={false}
         >
           <View>
             <Text h3 style={{ fontFamily: 'Montserrat-Bold', marginTop: 3 }}>

@@ -2,7 +2,7 @@
   "expo": {
     "name": "KnockApp",
     "slug": "knock",
-    "description": "Updated: 4 April 2020\n\nadding screen requests",
+    "description": "Updated: 4 April 2020\n\nsolving bottom scroll bouncing",
     "githubUrl": "https://github.com/xdemocle/knock-app",
     "privacy": "public",
     "sdkVersion": "36.0.0",

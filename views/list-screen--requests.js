@@ -22,7 +22,7 @@ export default function Screen({ navigation }) {
           style={styles.scrollView}
           showsHorizontalScrollIndicator={false}
           horizontal={false}
-          pagingEnabled={true}
+          pagingEnabled={false}
         >
           <View>
             <SearchBar
