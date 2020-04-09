@@ -52,40 +52,6 @@ function Screen({ navigation }) {
           <View style={styles.row}>
             <View style={styles.inputWrap}>
               <Input
-                placeholder="Birthdate"
-                autoCapitalize="none"
-                rightIcon={
-                  <Icon
-                    name="calendar"
-                    size={24}
-                    color={theme.colors.primary}
-                    onPress={() => setShow(!show)}
-                  />
-                }
-                disabled
-                disabledInputStyle={{
-                  color: '#111'
-                }}
-                value={date.toLocaleDateString([], dateOptions)}
-              />
-              {show && (
-                <RNDateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode="date"
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChange}
-                />
-              )}
-            </View>
-          </View>
-
-          <Divider />
-
-          <View style={styles.row}>
-            <View style={styles.inputWrap}>
-              <Input
                 placeholder="Email"
                 autoCapitalize="none"
                 autoCompleteType="email"
@@ -114,7 +80,7 @@ function Screen({ navigation }) {
           <Divider />
 
           <View style={styles.row}>
-            <View style={styles.inputWrap}>
+            <View style={[styles.inputWrapTwo, styles.inputWrapLeft]}>
               <Input
                 placeholder="Password"
                 autoCapitalize="none"
@@ -128,14 +94,10 @@ function Screen({ navigation }) {
                 // value={this.state.text}
               />
             </View>
-          </View>
 
-          <Divider />
-
-          <View style={styles.row}>
-            <View style={styles.inputWrap}>
+            <View style={[styles.inputWrapTwo, styles.inputWrapRight]}>
               <Input
-                placeholder="Confirm Password"
+                placeholder="Confirm"
                 autoCapitalize="none"
                 autoCompleteType="password"
                 textContentType="newPassword"
@@ -199,7 +161,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     paddingTop: 15,
     paddingBottom: 80
   },

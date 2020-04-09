@@ -14,6 +14,10 @@ import { mainProfile } from '../common/mock'
 const deviceWidth = Dimensions.get('window').width
 
 export default function Screen({ navigation }) {
+  const goToProfileEdit = () => {
+    return navigation.navigate('ProfileEdit')
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -36,6 +40,7 @@ export default function Screen({ navigation }) {
                   color: '#ffffff',
                   underlayColor: theme.colors.accent
                 }}
+                onEditPress={goToProfileEdit}
               />
               <Text h3 style={styles.userProfileNickname}>
                 {mainProfile.nickname}

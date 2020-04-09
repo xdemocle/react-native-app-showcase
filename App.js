@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import theme from './common/theme'
 import HomeScreen from './views/home-screen'
 import ListScreen from './views/list-screen'
+import ProfileEditScreen from './views/list-screen--profile-edit.js'
 
 const screenOptions = {
   headerStyle: {
@@ -40,6 +41,14 @@ const RootStack = () => {
           options={{
             headerShown: true,
             headerTitle: 'Knock'
+          }}
+        />
+        <Stack.Screen
+          name="ProfileEdit"
+          component={ProfileEditScreen}
+          options={{
+            headerShown: true,
+            headerTitle: 'Edit Profile'
           }}
         />
       </Stack.Navigator>

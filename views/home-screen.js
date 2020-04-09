@@ -60,13 +60,9 @@ function Screen({ navigation }) {
           <WelcomeScreen slideTo={slideTo} />
         </View>
 
-        <SafeAreaView style={styles.container}>
-          <ScrollView style={styles.scrollView}>
-            <View style={styles.slide}>
-              <SignupScreen slideTo={slideTo} />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
+        <View style={styles.slide}>
+          <SignupScreen slideTo={slideTo} />
+        </View>
       </Swiper>
     </ThemeProvider>
   )
