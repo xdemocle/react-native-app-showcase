@@ -2,7 +2,7 @@
   "expo": {
     "name": "KnockApp",
     "slug": "knock",
-    "description": "Updated: 9 April 2020\n\nmoving extended signup page in edit profile page",
+    "description": "Updated: 12 April 2020\n\nadding support and about pages; renaming some files; adding links in profile page; adding signup confirmation;",
     "githubUrl": "https://github.com/xdemocle/knock-app",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -13,9 +13,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
