@@ -4,9 +4,12 @@ import { StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import theme from './common/theme'
-import HomeScreen from './views/home-screen'
-import ListScreen from './views/list-screen'
-import ProfileEditScreen from './views/list-screen--profile-edit.js'
+import WelcomeScreen from './views/welcome-screen'
+import LoggedScreen from './views/logged-screen'
+import ProfileEditScreen from './views/logged-screen--profile-edit.js'
+import SignupConfirmationScreen from './views/welcome-screen--signup-confirmation.js'
+import AboutScreen from './views/global-screen--about.js'
+import SupportScreen from './views/global-screen--support.js'
 
 const screenOptions = {
   headerStyle: {
@@ -27,17 +30,25 @@ const RootStack = () => {
         barStyle="light-content"
         backgroundColor={theme.colors.primary}
       />
-      <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+      <Stack.Navigator initialRouteName="Welcome" screenOptions={screenOptions}>
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="Welcome"
+          component={WelcomeScreen}
           options={{
             headerShown: false
           }}
         />
         <Stack.Screen
-          name="List"
-          component={ListScreen}
+          name="SignupConfirmation"
+          component={SignupConfirmationScreen}
+          options={{
+            headerShown: true,
+            headerTitle: 'Knock: Confirm Registration'
+          }}
+        />
+        <Stack.Screen
+          name="Logged"
+          component={LoggedScreen}
           options={{
             headerShown: true,
             headerTitle: 'Knock'
@@ -49,6 +60,22 @@ const RootStack = () => {
           options={{
             headerShown: true,
             headerTitle: 'Edit Profile'
+          }}
+        />
+        <Stack.Screen
+          name="About"
+          component={AboutScreen}
+          options={{
+            headerShown: true,
+            headerTitle: 'About Knock'
+          }}
+        />
+        <Stack.Screen
+          name="Support"
+          component={SupportScreen}
+          options={{
+            headerShown: true,
+            headerTitle: "Knock's Support"
           }}
         />
       </Stack.Navigator>

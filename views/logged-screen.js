@@ -14,9 +14,9 @@ import * as Font from 'expo-font'
 import { Icon, ThemeProvider } from 'react-native-elements'
 import theme from '../common/theme'
 
-import ContactsListScreen from './list-screen--contacts'
-import ProfileScreen from './list-screen--profile'
-import RequestsScreen from './list-screen--requests'
+import ContactsListScreen from './logged-screen--contacts'
+import ProfileScreen from './logged-screen--profile'
+import RequestsScreen from './logged-screen--requests'
 
 export default function Screen({ navigation }) {
   const buttons = ['Profile', 'Friends']

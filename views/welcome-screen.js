@@ -4,9 +4,9 @@ import { ThemeProvider } from 'react-native-elements'
 import Swiper from 'react-native-page-swiper'
 import * as Font from 'expo-font'
 import theme from '../common/theme'
-import WelcomeScreen from './home-screen--welcome'
-import SignupScreen from './home-screen--signup'
-import LoginScreen from './home-screen--login'
+import MainScreen from './welcome-screen--main'
+import SignupScreen from './welcome-screen--signup'
+import LoginScreen from './welcome-screen--login'
 
 function Screen({ navigation }) {
   const [fontLoaded, setFontLoaded] = useState(false)
@@ -57,7 +57,7 @@ function Screen({ navigation }) {
         </View>
 
         <View style={styles.slide}>
-          <WelcomeScreen slideTo={slideTo} />
+          <MainScreen slideTo={slideTo} />
         </View>
 
         <View style={styles.slide}>

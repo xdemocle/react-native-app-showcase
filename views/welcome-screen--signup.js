@@ -115,7 +115,8 @@ function Screen({ navigation }) {
 
           <Button
             title="Create Account"
-            onPress={() => resetLoggedNavigation(navigation)}
+            // onPress={() => resetLoggedNavigation(navigation)}
+            onPress={() => navigation.navigate('SignupConfirmation')}
           />
         </View>
       </View>
