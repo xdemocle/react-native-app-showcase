@@ -1,15 +1,19 @@
 import 'react-native-gesture-handler'
 import * as React from 'react'
+import { useState } from 'react'
 import { StatusBar } from 'react-native'
+import { AppLoading } from 'expo'
+import { Asset } from 'expo-asset'
+import * as Font from 'expo-font'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import theme from './src/common/theme'
+import theme from './src/common/Theme'
 import WelcomeScreen from './src/views/welcome-screen'
 import LoggedScreen from './src/views/logged-screen'
-import ProfileEditScreen from './src/views/logged-screen--profile-edit.js'
-import SignupConfirmationScreen from './src/views/welcome-screen--signup-confirmation.js'
-import AboutScreen from './src/views/global-screen--about.js'
-import SupportScreen from './src/views/global-screen--support.js'
+import ProfileEditScreen from './src/views/logged-screen--profile-edit'
+import SignupConfirmationScreen from './src/views/welcome-screen--signup-confirmation'
+import AboutScreen from './src/views/global-screen--about'
+import SupportScreen from './src/views/global-screen--support'
 
 const screenOptions = {
   headerStyle: {
@@ -23,7 +27,40 @@ const screenOptions = {
 
 const Stack = createStackNavigator()
 
-const RootStack = () => {
+export default () => {
+  const [isReady, setIsReady] = useState(false)
+
+  const _cacheResourcesAsync = async () => {
+    const images = [require('./src/assets/icon.png')]
+    const cacheFontAssets = await Font.loadAsync({
+      'Montserrat-Black': require('./src/assets/fonts/Montserrat-Black.ttf'),
+      'Montserrat-Bold': require('./src/assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-ExtraBold': require('./src/assets/fonts/Montserrat-ExtraBold.ttf'),
+      'Montserrat-ExtraLight': require('./src/assets/fonts/Montserrat-ExtraLight.ttf'),
+      'Montserrat-Italic': require('./src/assets/fonts/Montserrat-Italic.ttf'),
+      'Montserrat-Light': require('./src/assets/fonts/Montserrat-Light.ttf'),
+      'Montserrat-Medium': require('./src/assets/fonts/Montserrat-Medium.ttf'),
+      'Montserrat-Regular': require('./src/assets/fonts/Montserrat-Regular.ttf')
+    })
+
+    const cacheImageAssets = images.map((image) => {
+      return Asset.fromModule(image).downloadAsync()
+    })
+
+    await Promise.all(cacheImageAssets, cacheFontAssets)
+  }
+
+  if (!isReady) {
+    return (
+      <AppLoading
+        autoHideSplash
+        startAsync={_cacheResourcesAsync}
+        onFinish={() => setIsReady(true)}
+        onError={console.warn}
+      />
+    )
+  }
+
   return (
     <NavigationContainer>
       <StatusBar
@@ -82,5 +119,3 @@ const RootStack = () => {
     </NavigationContainer>
   )
 }
-
-export default RootStack

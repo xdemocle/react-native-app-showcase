@@ -13,8 +13,8 @@ import {
 import { Button, Divider, Input, ThemeProvider } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
-import theme from '../common/theme'
-import { resetLoggedNavigation } from '../common/utility'
+import theme from '../common/Theme'
+import { resetLoggedNavigation } from '../common/Utility'
 
 const deviceWidth = Dimensions.get('window').width
 

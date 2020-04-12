@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Dimensions,
   SafeAreaView,
@@ -7,8 +7,8 @@ import {
   View
 } from 'react-native'
 import { Divider, Icon, ListItem, SearchBar, Text } from 'react-native-elements'
-import { contactsRequestList, contactsLockedList } from '../common/mock'
-import theme from '../common/theme'
+import { contactsRequestList, contactsLockedList } from '../common/Mock'
+import theme from '../common/Theme'
 
 const deviceWidth = Dimensions.get('window').width
 

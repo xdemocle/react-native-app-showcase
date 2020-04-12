@@ -1,43 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withNavigation } from '@react-navigation/compat'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
-import theme from '../common/theme'
-import { resetLoggedNavigation } from '../common/utility'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import RNDateTimePicker from '@react-native-community/datetimepicker'
+import theme from '../common/Theme'
+import { resetLoggedNavigation } from '../common/Utility'
 
 function Screen({ navigation }) {
+  const [date, setDate] = useState(new Date(1598051730000))
+  const [show, setShow] = useState(false)
+
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' }
+
+  const onChange = (event, selectedDate) => {
+    setShow(Platform.OS === 'ios')
+    setDate(selectedDate || date)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.jumbotron}>
-        <Text style={styles.jumbotronFirst}>Welcome Back!</Text>
-        <Text style={styles.jumbotronSecond}>Lets log you back in!</Text>
+        <Text style={styles.jumbotronFirst}>Yay!</Text>
+        <Text style={styles.jumbotronSecond}>Confirm your account!</Text>
       </View>
       <View style={styles.formWrapper}>
         <View style={styles.form}>
-          <Input
-            placeholder="Email"
-            autoCapitalize="none"
-            autoCompleteType="email"
-            textContentType="username"
-            // errorMessage="The jbdskjbsa asljklda."
-            // onChangeText={(text) => this.setState({text})}
-            // value={this.state.text}
-          />
-
-          <Input
-            placeholder="Password"
-            autoCapitalize="none"
-            autoCompleteType="password"
-            textContentType="password"
-            secureTextEntry
-            // onChangeText={(text) => this.setState({text})}
-            // value={this.state.text}
-          />
+          <View style={styles.row}>
+            <Text>
+              This passage will be bypassed by an email confirmation link.
+            </Text>
+          </View>
+          <View style={styles.row}>
+            <Text>And will only show a message saying: OPEN YOUR EMAIL!</Text>
+          </View>
 
           <Divider />
 
           <Button
-            title="Log In"
+            title="SignupConfirmation"
             onPress={() => resetLoggedNavigation(navigation)}
           />
         </View>
@@ -60,13 +61,13 @@ const styles = StyleSheet.create({
   jumbotron: {
     flex: 1,
     width: '100%',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center'
   },
   jumbotronFirst: {
     width: '100%',
     fontFamily: 'Montserrat-Bold',
-    fontSize: 37,
+    fontSize: 53,
     textAlign: 'left',
     lineHeight: 60
   },
@@ -80,15 +81,32 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   formWrapper: {
-    flex: 3,
+    flex: 4,
     alignItems: 'center',
     width: '100%',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: 15,
+    paddingBottom: 80
   },
   form: {
     width: '100%',
     flexDirection: 'column'
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  inputWrap: {
+    flex: 1
+  },
+  inputWrapTwo: {
+    flex: 2
+  },
+  inputWrapLeft: {
+    marginRight: 4
+  },
+  inputWrapRight: {
+    marginLeft: 4
   }
 })
 

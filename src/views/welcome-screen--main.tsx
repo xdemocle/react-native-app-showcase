@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, Platform, StyleSheet, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import theme from '../common/theme'
+import theme from '../common/Theme'
 
 const Screen = ({ slideTo }) => {
   return (

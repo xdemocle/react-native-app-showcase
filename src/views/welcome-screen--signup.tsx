@@ -4,8 +4,8 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 import { Button, Divider, Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import RNDateTimePicker from '@react-native-community/datetimepicker'
-import theme from '../common/theme'
-import { resetLoggedNavigation } from '../common/utility'
+import theme from '../common/Theme'
+import { resetLoggedNavigation } from '../common/Utility'
 
 function Screen({ navigation }) {
   const [date, setDate] = useState(new Date(1598051730000))

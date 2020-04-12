@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Dimensions,
   SafeAreaView,
@@ -7,9 +7,9 @@ import {
   View
 } from 'react-native'
 import { Avatar, Button, Divider, Text } from 'react-native-elements'
-import { resetUnloggedNavigation } from '../common/utility'
-import theme from '../common/theme'
-import { mainProfile } from '../common/mock'
+import { resetUnloggedNavigation } from '../common/Utility'
+import theme from '../common/Theme'
+import { mainProfile } from '../common/Mock'
 
 const deviceWidth = Dimensions.get('window').width
 
